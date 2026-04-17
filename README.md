@@ -146,25 +146,35 @@ make test_tree
 
 ## 📚 Analysis Answers
 
+## 🧠 Analysis Answers
+
 ### Q5.1 (Checkout)
 
-Checkout updates HEAD and replaces working directory with files from target commit.
+Checkout updates the HEAD to point to the selected branch and loads the corresponding commit. The commit’s tree is then used to reconstruct the working directory by writing all files and directories. Any files not present in the target branch are removed. The index is also updated to match the new state. This operation is complex because it must avoid overwriting uncommitted changes and requires careful synchronization of files.
+
+---
 
 ### Q5.2 (Dirty Check)
 
-Compare working directory with index; if mismatch, block checkout.
+A dirty working directory is detected by comparing the current file contents with the index. For each tracked file, a hash is computed and compared with the stored hash in the index. If they differ, the file is considered modified. During checkout, if a modified file also differs in the target branch, the operation is aborted to prevent loss of local changes.
+
+---
 
 ### Q5.3 (Detached HEAD)
 
-HEAD points to commit directly. Commits exist but not linked to branch.
+In a detached HEAD state, HEAD points directly to a commit instead of a branch. New commits can still be created, but they are not referenced by any branch. These commits may become unreachable and can be lost during garbage collection. To recover them, a new branch can be created pointing to the commit.
+
+---
 
 ### Q6.1 (Garbage Collection)
 
-Traverse all reachable commits and delete unreachable objects.
+Garbage collection identifies unreachable objects by starting from all branch heads and traversing commits, trees, and blobs. All visited objects are marked as reachable using a hash set. After traversal, any object not marked is considered unreachable and can be safely deleted. This follows a mark-and-sweep approach for efficient cleanup.
+
+---
 
 ### Q6.2 (Race Condition)
 
-GC may delete objects during commit. Avoid using locking and safe traversal.
+Running garbage collection during a commit can lead to race conditions. A commit may create objects that are not yet referenced by any branch. If GC runs at this time, it may treat these objects as unreachable and delete them. This can corrupt the repository. To avoid this, Git uses locking mechanisms and atomic updates to ensure consistency.
 
 ---
 
