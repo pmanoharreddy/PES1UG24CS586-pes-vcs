@@ -108,10 +108,21 @@ make test_tree
 
 ## 📸 Screenshots Included
 
-* Phase 1: Object storage tests
-* Phase 2: Tree tests
-* Phase 3: Index and status
-* Phase 4: Commit history and logs
+![Phase 1](screenshots/1.png)
+![Phase 1](screenshots/1b.png)
+
+### Phase 2: Object storage tests
+![Phase 2](screenshots/2.png)
+![Phase 2](screenshots/2b.png)
+
+### Phase 3: Object storage tests
+![Phase 3](screenshots/3.png)
+![Phase 3](screenshots/3b.png)
+
+### Phase 4: Object storage tests
+![Phase 4](screenshots/4.png)
+![Phase 4](screenshots/4b.png)
+![Phase 4](screenshots/4c.png)
 
 ---
 
