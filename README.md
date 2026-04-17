@@ -108,21 +108,21 @@ make test_tree
 
 ## 📸 Screenshots Included
 
-![Phase 1](screenshots/1.png)
-![Phase 1](screenshots/1b.png)
+![Phase 1](oss/1.png)
+![Phase 1](oss/1b.png)
 
 ### Phase 2: Object storage tests
-![Phase 2](screenshots/2.png)
-![Phase 2](screenshots/2b.png)
+![Phase 2](oss/2.png)
+![Phase 2](oss/2b.png)
 
 ### Phase 3: Object storage tests
-![Phase 3](screenshots/3.png)
-![Phase 3](screenshots/3b.png)
+![Phase 3](oss/3.png)
+![Phase 3](oss/3b.png)
 
 ### Phase 4: Object storage tests
-![Phase 4](screenshots/4.png)
-![Phase 4](screenshots/4b.png)
-![Phase 4](screenshots/4c.png)
+![Phase 4](oss/4.png)
+![Phase 4](oss/4b.png)
+![Phase 4](oss/4c.png)
 
 ---
 
