@@ -74,6 +74,7 @@ int commit_parse(const void *data, size_t len, Commit *commit_out) {
 // Serialize a Commit struct to the text format.
 // Caller must free(*data_out).
 int commit_serialize(const Commit *commit, void **data_out, size_t *len_out) {
+    // commmit_serialize
     char tree_hex[HASH_HEX_SIZE + 1];
     char parent_hex[HASH_HEX_SIZE + 1];
     hash_to_hex(&commit->tree, tree_hex);
@@ -103,6 +104,7 @@ int commit_serialize(const Commit *commit, void **data_out, size_t *len_out) {
 
 // Walk commit history from HEAD to the root.
 int commit_walk(commit_walk_fn callback, void *ctx) {
+    //commit_walk
     ObjectID id;
     if (head_read(&id) != 0) return -1;
 
