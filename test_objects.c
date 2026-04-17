@@ -58,6 +58,7 @@ void test_deduplication(void) {
 }
 
 void test_integrity(void) {
+    //test_integrity
     const char *content = "Test integrity\n";
     ObjectID id;
     object_write(OBJ_BLOB, content, strlen(content), &id);
