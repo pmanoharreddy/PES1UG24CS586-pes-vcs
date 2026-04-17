@@ -146,8 +146,6 @@ make test_tree
 
 ## 📚 Analysis Answers
 
-## 🧠 Analysis Answers
-
 ### Q5.1 (Checkout)
 
 Checkout updates the HEAD to point to the selected branch and loads the corresponding commit. The commit’s tree is then used to reconstruct the working directory by writing all files and directories. Any files not present in the target branch are removed. The index is also updated to match the new state. This operation is complex because it must avoid overwriting uncommitted changes and requires careful synchronization of files.
