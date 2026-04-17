@@ -17,6 +17,7 @@ int object_exists(const ObjectID *id);
 void object_path(const ObjectID *id, char *path_out, size_t path_size);
 
 void test_blob_storage(void) {
+    // test_blob_storage
     const char *content = "Hello, PES-VCS!\n";
     ObjectID id;
 
@@ -58,6 +59,7 @@ void test_deduplication(void) {
 }
 
 void test_integrity(void) {
+    //test_integrity
     const char *content = "Test integrity\n";
     ObjectID id;
     object_write(OBJ_BLOB, content, strlen(content), &id);

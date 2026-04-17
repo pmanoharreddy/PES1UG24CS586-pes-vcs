@@ -38,6 +38,7 @@ uint32_t get_file_mode(const char *path) {
 // Parse binary tree data into a Tree struct safely.
 // Returns 0 on success, -1 on parse error.
 int tree_parse(const void *data, size_t len, Tree *tree_out) {
+    //tree_parse
     tree_out->count = 0;
     const uint8_t *ptr = (const uint8_t *)data;
     const uint8_t *end = ptr + len;
@@ -81,6 +82,7 @@ int tree_parse(const void *data, size_t len, Tree *tree_out) {
 
 // Helper for qsort to ensure consistent tree hashing
 static int compare_tree_entries(const void *a, const void *b) {
+    // compare_tree_entries
     return strcmp(((const TreeEntry *)a)->name, ((const TreeEntry *)b)->name);
 }
 
@@ -88,6 +90,7 @@ static int compare_tree_entries(const void *a, const void *b) {
 // Caller must free(*data_out).
 // Returns 0 on success, -1 on error.
 int tree_serialize(const Tree *tree, void **data_out, size_t *len_out) {
+    // tree_serlialize
     // Estimate max size: (6 bytes mode + 1 byte space + 256 bytes name + 1 byte null + 32 bytes hash) per entry
     size_t max_size = tree->count * 296; 
     uint8_t *buffer = malloc(max_size);

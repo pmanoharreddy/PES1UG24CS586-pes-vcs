@@ -25,6 +25,7 @@
 #include <dirent.h>
 
 int object_write(ObjectType type, const void *data, size_t len, ObjectID *id_out);
+// object_write
 // ─── PROVIDED ────────────────────────────────────────────────────────────────
 
 // Find an index entry by path (linear scan).
@@ -39,6 +40,7 @@ IndexEntry* index_find(Index *index, const char *path) {
 // Remove a file from the index.
 // Returns 0 on success, -1 if path not in index.
 int index_remove(Index *index, const char *path) {
+    // index_remove
     for (int i = 0; i < index->count; i++) {
         if (strcmp(index->entries[i].path, path) == 0) {
             int remaining = index->count - i - 1;

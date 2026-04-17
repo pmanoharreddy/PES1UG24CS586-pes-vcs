@@ -66,6 +66,7 @@ void cmd_status(void) {
 
 // Usage: pes commit -m <message>
 void cmd_commit(int argc, char *argv[]) {
+    // cnd_commit
     if (argc < 4 || strcmp(argv[2], "-m") != 0) {
         fprintf(stderr, "error: commit requires a message (-m \"message\")\n");
         return;
@@ -85,6 +86,7 @@ void cmd_commit(int argc, char *argv[]) {
 
 // Callback for commit_walk used by cmd_log.
 static void print_commit(const ObjectID *id, const Commit *commit, void *ctx) {
+    //print_commit
     (void)ctx;
     char hex[HASH_HEX_SIZE + 1];
     hash_to_hex(id, hex);
