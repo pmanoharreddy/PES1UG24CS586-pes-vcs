@@ -63,6 +63,7 @@ void test_tree_roundtrip(void) {
 
 void test_tree_determinism(void) {
     // Same entries in different order must produce identical serialization
+    //test_tree_determinism
     Tree tree_a, tree_b;
     tree_a.count = 2;
     tree_b.count = 2;
