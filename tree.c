@@ -8,7 +8,7 @@
 //
 // Example single entry (conceptual):
 //   "100644 hello.txt\0" followed by 32 raw bytes of SHA-256
-
+#include "pes.h"
 #include "tree.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -16,6 +16,7 @@
 #include <dirent.h>
 #include <sys/stat.h>
 
+int object_write(ObjectType type, const void *data, size_t len, ObjectID *id_out);
 // ─── Mode Constants ─────────────────────────────────────────────────────────
 
 #define MODE_FILE      0100644
@@ -131,7 +132,47 @@ int tree_serialize(const Tree *tree, void **data_out, size_t *len_out) {
 // Returns 0 on success, -1 on error.
 int tree_from_index(ObjectID *id_out) {
     // TODO: Implement recursive tree building
-    // (See Lab Appendix for logical steps)
+    // Read index file manually
+    FILE *f = fopen(".pes/index", "r");
+    if (!f) return -1;
+
+    char line[512];
+    char buffer[4096];
+    size_t offset = 0;
+
+    while (fgets(line, sizeof(line), f)) {
+
+        char mode[10], hash_hex[65], path[256];
+        long mtime;
+        size_t size;
+
+        sscanf(line, "%s %s %ld %zu %s", mode, hash_hex, &mtime, &size, path);
+
+        // write mode + space + name
+        offset += snprintf(buffer + offset, sizeof(buffer) - offset,
+                           "%s %s", mode, path);
+
+        buffer[offset++] = '\0';
+
+        // convert hex → binary hash
+        ObjectID id;
+        hex_to_hash(hash_hex, &id);
+
+        memcpy(buffer + offset, id.hash, HASH_SIZE);
+        offset += HASH_SIZE;
+    }
+
+    fclose(f);
+
+    // write tree object
+    return object_write(OBJ_TREE, buffer, offset, id_out);
+
+// (See Lab Appendix for logical steps)
     (void)id_out;
     return -1;
 }
+// phase2 change1
+// phase2 change2
+// phase2 change3
+// phase2 change4
+// phase2 change5
