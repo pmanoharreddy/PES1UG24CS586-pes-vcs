@@ -64,6 +64,7 @@ void test_tree_roundtrip(void) {
 void test_tree_determinism(void) {
     // Same entries in different order must produce identical serialization
     //test_tree_determinism
+    //test_tree_determinism
     Tree tree_a, tree_b;
     tree_a.count = 2;
     tree_b.count = 2;
@@ -77,6 +78,7 @@ void test_tree_determinism(void) {
     strcpy(tree_a.entries[1].name, "a_file.txt");
 
     // tree_b: entries in order a, z
+    // tree_b: entries in order a,z
     tree_b.entries[0].mode = 0100644;
     memset(tree_b.entries[0].hash.hash, 0x22, HASH_SIZE);
     strcpy(tree_b.entries[0].name, "a_file.txt");
